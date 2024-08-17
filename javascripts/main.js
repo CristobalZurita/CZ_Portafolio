@@ -4,9 +4,6 @@ window.addEventListener('load',function(){
   let checkElement = document.querySelector("#dark-toggle");
   checkElement.checked = isUsingDarkMode();
 
-  
-
-
   checkElement.addEventListener("change",function(ev){
     let bodyElement = document.querySelector("body");
     if(this.checked){
@@ -27,7 +24,6 @@ function setInitialValueForColorScheme(){
 
   if (savedValue === "light") return bodyElement.classList.add("force-light"); 
   bodyElement.classList.add("force-dark"); 
-
 }
 
 function getDarkModeValueFromLS(){
@@ -36,17 +32,12 @@ function getDarkModeValueFromLS(){
 }
 
 function setDarkModeValueFromLS(value) {
-  // value: dark, light
   if (!window.localStorage) return;
   window.localStorage.setItem("mp--color-scheme",value)
-
 }
 
 function isUsingDarkMode(){
-
-
   let bodyElement = document.querySelector("body");
-
   let blackColor = getComputedStyle(bodyElement).getPropertyValue("--black");
   let bodyBg = getComputedStyle(bodyElement).backgroundColor;
   return blackColor.trim() == rgb2hex(bodyBg);
