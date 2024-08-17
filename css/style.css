@@ -250,9 +250,10 @@ button:hover, .btn-large:hover {
 }
 
 .gallery-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 10%;
 }
 
 .gallery-item img {
@@ -261,12 +262,15 @@ button:hover, .btn-large:hover {
   border-radius: var(--radius);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   object-fit: cover;
+  
 }
 
 .gallery-item:hover img {
   transform: scale(1.05);
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
 }
+
+
 
 .volver-container {
   text-align: center;
