@@ -257,7 +257,7 @@ header.main-galeria {
 header.main-galeria h1 {
   font-size: var(--font-size-large);
   text-align: center;
-  margin-top: 100px;
+  margin-top: 50px;
 }
 
 .title-container {
@@ -268,13 +268,19 @@ header.main-galeria h1 {
   text-align: center;
 }
 
+/* Estilos específicos para la galería de fotos */
 .gallery-container {
   margin-top: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-/* Estilos específicos para la galería de fotos */
-.photo-gallery {
-  padding: var(--padding-medium);
+.preview img {
+  width: 1040px; /* Tamaño intrínseco de la imagen principal */
+  height: 780px; /* Altura intrínseca de la imagen principal */
+  border-radius: var(--border-radius);
+  border: 4px solid var(--dark-gray);
 }
 
 .gallery-grid {
@@ -290,55 +296,38 @@ header.main-galeria h1 {
 
 .gallery {
   display: flex;
-  overflow-x: auto; /* Agrega esta propiedad */
-  gap: 35px;
-  padding: 10px 20px;
-  max-height: 350px;
-  align-items: center;
-  white-space: nowrap;
-  flex: 1;
-}
-
-.gallery-item {
-  flex: 0 0 auto;
-  display: inline-block;
-  align-items: center;
+  gap: 10px; /* Espacio entre miniaturas */
+  overflow-x: auto;
   justify-content: center;
-  margin: 0 35px;
+  padding: 10px 0;
 }
 
-.gallery-item img {
-  filter: grayscale(100%);
-  width: 300px;
+.gallery img {
+  width: 100px; /* Tamaño de las miniaturas */
   height: auto;
-  transition: transform 0.3s ease, filter 0.3s ease, opacity 0.3s ease;
   border-radius: var(--border-radius);
-  object-fit: cover;
-  padding: 5px;
-  margin: 0 10px;
-}
-
-/* Cambiar el comportamiento al pasar el mouse sobre una imagen */
-.gallery-item:hover img {
-  filter: grayscale(0);
-  transform: scale(1.2);
-}
-
-/* Reducción del tamaño de las imágenes no seleccionadas */
-.gallery-item img:not(:hover) {
-  opacity: 0.5;
-  transform: scale(0.8);
-}
-
-.gallery::-webkit-scrollbar {
-  display: none;
-}
-
-#backBtn,
-#nextBtn {
-  width: 50px;
   cursor: pointer;
-  margin: 4px;
+  border: 2px solid var(--dark-gray);
+  transition: transform 0.2s, border-color 0.2s;
+}
+
+.gallery img:hover {
+  transform: scale(1.1);
+  border-color: #00ccff;
+}
+
+/* Nuevo estilo para la miniatura activa */
+.gallery img.active {
+  border-color: #00ccff;
+  transform: scale(1.1);
+}
+
+/* Estilos para los botones de navegación */
+#backBtn, #nextBtn {
+  width: 40px;
+  cursor: pointer;
+  margin: 10px;
+  z-index: 10;
 }
 
 /* Estilos para el botón "Volver" */
@@ -355,7 +344,7 @@ header.main-galeria h1 {
   padding: 10px 20px;
   border-radius: var(--border-radius);
   cursor: pointer;
-  font-size: 1rem;
+  font-size: 3rem;
   transition: background-color 0.3s ease, transform 0.3s ease;
   text-decoration: none;
   display: inline-block;
@@ -364,11 +353,4 @@ header.main-galeria h1 {
 .btn-volver:hover {
   background-color: var(--accent-pink);
   transform: translateY(-2px);
-}
-
-#backBtn,
-#nextBtn {
-  width: 50px;
-  cursor: pointer;
-  z-index: 10;
 }

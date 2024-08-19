@@ -1,27 +1,44 @@
 document.addEventListener("DOMContentLoaded", function() {
   console.log("DOM fully loaded");
-  
-  let scrollContainer = document.querySelector(".gallery");
+
+  let gallery = document.querySelector(".gallery");
+  let previewImage = document.querySelector(".preview img");
+  let thumbnails = document.querySelectorAll(".gallery img");
   let backBtn = document.getElementById("backBtn");
   let nextBtn = document.getElementById("nextBtn");
+  let currentIndex = 0;
 
-  console.log("scrollContainer:", scrollContainer);
-  console.log("backBtn:", backBtn);
-  console.log("nextBtn:", nextBtn);
+// Función para actualizar la imagen principal y la miniatura activa
+function updatePreview(index) {
+  if (index >= 0 && index < thumbnails.length) {
+    previewImage.src = thumbnails[index].src;
+    currentIndex = index;
 
-  if(scrollContainer && backBtn && nextBtn) {
-    console.log("All elements found");
-
-    nextBtn.addEventListener('click', () => {
-      console.log("Next button clicked");
-      scrollContainer.scrollLeft += 300;
-    });
-
-    backBtn.addEventListener('click', () => {
-      console.log("Back button clicked");
-      scrollContainer.scrollLeft -= 300;
-    });
-  } else {
-    console.log("Some elements are missing");
+    // Remover la clase 'active' de todas las miniaturas
+    thumbnails.forEach(thumb => thumb.classList.remove('active'));
+    // Agregar la clase 'active' a la miniatura seleccionada
+    thumbnails[index].classList.add('active');
   }
+}
+
+  // Evento para actualizar la imagen cuando se hace clic en una miniatura
+  thumbnails.forEach((thumbnail, index) => {
+    thumbnail.addEventListener('click', () => {
+      updatePreview(index);
+    });
+  });
+
+  // Eventos para los botones "Back" y "Next"
+  nextBtn.addEventListener('click', () => {
+    let nextIndex = (currentIndex + 1) % thumbnails.length;
+    updatePreview(nextIndex);
+  });
+
+  backBtn.addEventListener('click', () => {
+    let prevIndex = (currentIndex - 1 + thumbnails.length) % thumbnails.length;
+    updatePreview(prevIndex);
+  });
+
+  // Inicializar con la primera imagen
+  updatePreview(currentIndex);
 });
