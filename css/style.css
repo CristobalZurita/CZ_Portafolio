@@ -1,26 +1,36 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;700&display=swap');
 
+/* Variables globales */
 :root {
-  --blue: #00516F; /* Color principal de fondo */
-  --blue-accent: #00758E; /* Color secundario */
-  --pink: #008F98; /* Color de acento */
-  --dark-grey: #00AAA0; /* Color oscuro */
-  --black: #00AAA0; /* Fondo claro */
-  --white: #000000; /* Color de texto */
-  --lightGrey: #00516F; /* Fondo de las tarjetas */
-  --radius: 10px;
-  --card-bg: rgba(0, 81, 111, 0.8); /* Fondo semi-transparente */
-  --base-font-size: 2.2rem;
-  --padding-scale: 1.65;
-  --backdrop-filter: blur(10px); /* Difuminado para el fondo */
+  --primary-blue: #00516F;
+  --secondary-blue: #00758E;
+  --accent-pink: #008F98;
+  --dark-gray: #00AAA0;
+  --text-black: #000000;
+  --text-white: #ffffff;
+  --card-bg-color: rgba(0, 81, 111, 0.8);
+  --border-radius: 10px;
+  --font-size-base: 2.2rem;
+  --font-size-large: calc(3rem * 1.7);
+  --font-size-medium: calc(2rem * 1.7);
+  --padding-large: calc(2rem * 1.65);
+  --padding-medium: calc(1rem * 1.65);
+  --padding-small: calc(5px * 1.65);
+  --blur-filter: blur(10px);
 }
 
+/* Estilos generales */
 body {
   font-family: 'Nunito', sans-serif;
-  background-color: var(--pink);
-  font-size: var(--base-font-size);
+  background-color: var(--accent-pink);
+  font-size: var(--font-size-base);
   scroll-behavior: smooth;
-  color: var(--white);
+  color: var(--text-white);
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
 img {
@@ -28,54 +38,55 @@ img {
   height: auto;
 }
 
+/* Estilos de la página principal (index) */
 header.main {
-  background-color: var(--blue); /* Color principal */
-  color: var(--white);
+  background-color: var(--primary-blue);
+  color: var(--text-white);
   padding: 1em;
   min-height: 100vh;
   display: grid;
-  grid-template-rows: auto 1fr;
+  grid-template-rows: auto 1fr auto;
   place-items: center;
   text-align: center;
 }
 
 header.main h1 {
   margin: 0;
-  font-size: calc(3rem * 1.7);
+  font-size: var(--font-size-large);
 }
 
 .title {
-  font-size: calc(3rem * 1.7);
+  font-size: var(--font-size-large);
 }
 
 .subtitle {
-  font-size: calc(2rem * 1.7);
+  font-size: var(--font-size-medium);
 }
 
 .main-container {
   width: calc(52rem * 1.485);
   max-width: 100%;
   margin: 0 auto;
-  padding: calc(1rem * var(--padding-scale));
+  padding: var(--padding-medium);
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
 .padding-y-100 {
-  padding-top: calc(2rem * var(--padding-scale));
-  padding-bottom: calc(2rem * var(--padding-scale));
+  padding-top: var(--padding-large);
+  padding-bottom: var(--padding-large);
 }
 
 .project {
-  position: relative; 
+  position: relative;
   display: flex;
   flex-direction: column;
-  background-color: var(--card-bg);
-  border-radius: var(--radius);
+  background-color: var(--card-bg-color);
+  border-radius: var(--border-radius);
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   overflow: hidden;
-  margin-bottom: calc(1.5rem * var(--padding-scale));
+  margin-bottom: calc(1.5rem * 1.65);
   align-items: center;
   text-align: center;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -110,44 +121,55 @@ header.main h1 {
 }
 
 .download-link-container {
-  margin-top: calc(10px * var(--padding-scale));
+  margin-top: var(--padding-small);
   text-align: center;
 }
 
-.download-link2, .download-link {
+.download-link, 
+.download-link2, 
+.btn-large {
   display: inline-block;
-  background-color: var(--blue-accent);
-  padding: calc(5px * var(--padding-scale)) calc(10px * var(--padding-scale));
+  background-color: var(--secondary-blue);
+  padding: var(--padding-small) var(--padding-medium);
   border-radius: 5px;
   text-decoration: none;
-  color: var(--white);
+  color: var(--text-white);
   font-size: calc(14px * 2.32);
   transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
-.download-link:hover, .download-link2:hover {
-  background-color: var(--black);
+.download-link:hover, 
+.download-link2:hover, 
+.btn-large:hover {
+  background-color: var(--dark-gray);
   transform: translateY(-2px);
 }
 
+button, 
+.btn-large {
+  font-size: 2rem;
+  border: none;
+  cursor: pointer;
+}
+
 .project-info {
-  padding: calc(1rem * var(--padding-scale));
+  padding: var(--padding-medium);
   background-color: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(5px);
   -webkit-backdrop-filter: blur(5px);
   text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
-  color: var(--white);
+  color: var(--text-white);
 }
 
 .two-columns {
   column-count: 2;
-  column-gap: calc(20px * var(--padding-scale));
+  column-gap: calc(20px * 1.65);
   list-style-position: inside;
   padding-left: 0;
 }
 
 .two-columns li {
-  margin-bottom: calc(10px * var(--padding-scale));
+  margin-bottom: var(--padding-small);
 }
 
 @media (min-width: 768px) {
@@ -189,26 +211,7 @@ header.main h1 {
   }
 }
 
-button, .btn-large {
-  background-color: var(--blue-accent);
-  color: var(--white);
-  border: none;
-  padding: 10px 20px;
-  border-radius: var(--radius);
-  cursor: pointer;
-  font-size: 1rem;
-  transition: background-color 0.3s ease, transform 0.3s ease;
-}
-
-button:hover, .btn-large:hover {
-  background-color: var(--pink);
-  transform: translateY(-2px);
-}
-
-.btn-large {
-  font-size: 2rem;
-}
-
+/* Estilos específicos para el curriculum */
 #curriculum .project {
   width: 110%;
   margin: 0 auto;
@@ -217,14 +220,14 @@ button:hover, .btn-large:hover {
   align-items: center;
   text-align: center;
   height: auto;
-  padding: calc(3rem * var(--padding-scale));
-  background-color: var(--card-bg);
-  border-radius: var(--radius);
+  padding: var(--padding-large);
+  background-color: var(--card-bg-color);
+  border-radius: var(--border-radius);
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   overflow: hidden;
-  backdrop-filter: var(--backdrop-filter);
-  -webkit-backdrop-filter: var(--backdrop-filter);
-  max-width: 1000px; 
+  backdrop-filter: var(--blur-filter);
+  -webkit-backdrop-filter: var(--blur-filter);
+  max-width: 1000px;
 }
 
 #curriculum .image-container {
@@ -233,65 +236,139 @@ button:hover, .btn-large:hover {
   margin-bottom: 2rem;
 }
 
-#curriculum .image-container img {
-  max-height: 400px;
-  object-fit: cover;
-  height: auto;
-  width: 100%;
-}
-
 #curriculum .download-link-container {
   margin-top: auto;
   text-align: center;
 }
 
+/* Estilos específicos para el header de la galería */
+header.main-galeria {
+  background-color: var(--primary-blue);
+  color: var(--text-white);
+  padding: 1em 0;
+  min-height: 88.5vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+header.main-galeria h1 {
+  font-size: var(--font-size-large);
+  text-align: center;
+  margin-top: 100px;
+}
+
+.title-container {
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+}
+
+.gallery-container {
+  margin-top: 100px;
+}
+
+/* Estilos específicos para la galería de fotos */
 .photo-gallery {
-  padding: calc(2rem * var(--padding-scale));
+  padding: var(--padding-medium);
 }
 
 .gallery-grid {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 10%;
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding-bottom: 20px;
+  flex: 1;
+}
+
+.gallery {
+  display: flex;
+  overflow-x: auto; /* Agrega esta propiedad */
+  gap: 35px;
+  padding: 10px 20px;
+  max-height: 350px;
+  align-items: center;
+  white-space: nowrap;
+  flex: 1;
+}
+
+.gallery-item {
+  flex: 0 0 auto;
+  display: inline-block;
+  align-items: center;
+  justify-content: center;
+  margin: 0 35px;
 }
 
 .gallery-item img {
-  width: 100%;
+  filter: grayscale(100%);
+  width: 300px;
   height: auto;
-  border-radius: var(--radius);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: transform 0.3s ease, filter 0.3s ease, opacity 0.3s ease;
+  border-radius: var(--border-radius);
   object-fit: cover;
-  
+  padding: 5px;
+  margin: 0 10px;
 }
 
+/* Cambiar el comportamiento al pasar el mouse sobre una imagen */
 .gallery-item:hover img {
-  transform: scale(1.05);
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+  filter: grayscale(0);
+  transform: scale(1.2);
 }
 
+/* Reducción del tamaño de las imágenes no seleccionadas */
+.gallery-item img:not(:hover) {
+  opacity: 0.5;
+  transform: scale(0.8);
+}
 
+.gallery::-webkit-scrollbar {
+  display: none;
+}
 
+#backBtn,
+#nextBtn {
+  width: 50px;
+  cursor: pointer;
+  margin: 4px;
+}
+
+/* Estilos para el botón "Volver" */
 .volver-container {
   text-align: center;
-  margin-top: 20px;
+  margin-top: auto;
   margin-bottom: 20px;
 }
 
 .btn-volver {
-  background-color: var(--blue-accent);
-  color: var(--white);
+  background-color: var(--secondary-blue);
+  color: var(--text-white);
   border: none;
   padding: 10px 20px;
-  border-radius: var(--radius);
+  border-radius: var(--border-radius);
   cursor: pointer;
   font-size: 1rem;
   transition: background-color 0.3s ease, transform 0.3s ease;
-  text-decoration: none; /* Esto es importante para eliminar el subrayado del enlace */
-  display: inline-block; /* Hace que el enlace se comporte como un botón */
+  text-decoration: none;
+  display: inline-block;
 }
 
 .btn-volver:hover {
-  background-color: var(--pink);
+  background-color: var(--accent-pink);
   transform: translateY(-2px);
+}
+
+#backBtn,
+#nextBtn {
+  width: 50px;
+  cursor: pointer;
+  z-index: 10;
 }
