@@ -64,14 +64,17 @@ header.main h1 {
 }
 
 .main-container {
-  width: calc(52rem * 1.485);
+  width: 100%;
   max-width: 100%;
   margin: 0 auto;
   padding: var(--padding-medium);
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center; /* Centrar verticalmente */
+  min-height: 100vh; /* Ocupa toda la altura de la pantalla */
 }
+
 
 .padding-y-100 {
   padding-top: var(--padding-large);
@@ -79,18 +82,18 @@ header.main h1 {
 }
 
 .project {
-  position: relative;
+  width: 100%; /* Ocupa todo el ancho de la pantalla */
+  max-width: 1200px;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: center; /* Centra horizontalmente el contenido */
+  text-align: center; /* Centra horizontalmente el texto */
   background-color: var(--card-bg-color);
   border-radius: var(--border-radius);
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   overflow: hidden;
-  margin-bottom: calc(1.5rem * 1.65);
-  align-items: center;
-  text-align: center;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  width: calc(100% + 30rem);
+  padding: var(--padding-large);
 }
 
 .project:hover {
@@ -100,20 +103,14 @@ header.main h1 {
 
 .image-container {
   width: 100%;
-  max-width: 1015px;
-  align-self: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  overflow: hidden;
+  max-width: 800px;
+  margin-bottom: 20px;
 }
 
 .image-container img {
   width: 100%;
   height: auto;
   object-fit: cover;
-  max-height: 400px;
-  transition: transform 0.3s ease;
 }
 
 .project:hover .image-container img {
@@ -159,6 +156,8 @@ button,
   -webkit-backdrop-filter: blur(5px);
   text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
   color: var(--text-white);
+  max-width: 80%;
+  margin: 0 auto;
 }
 
 .two-columns {
@@ -171,19 +170,19 @@ button,
 .two-columns li {
   margin-bottom: var(--padding-small);
 }
-
 @media (min-width: 768px) {
   .project {
     flex-direction: row;
-    align-items: flex-start;
+    align-items: center; /* Asegura que los elementos estén centrados verticalmente */
+    justify-content: center; /* Centra horizontalmente los elementos */
+    text-align: left; /* Para texto alineado a la izquierda en pantallas grandes */
   }
   .image-container {
-    flex: 0 0 495px;
+    flex: 0 0 auto;
     margin-right: 1rem;
   }
   .project-info {
     flex: 1;
-    text-align: left;
   }
 }
 

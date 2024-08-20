@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galería de Videos - APC</title>
+    <link rel="stylesheet" href="/css/style.css"> <!-- Ruta del archivo CSS -->
+</head>
+<body>
+    <header class="main-galeria">
+        <div class="title-container">
+            <h1>Galería de Videos</h1>
+        </div>
+        
+        <div class="video-gallery-container">
+            <div class="video-preview">
+                <iframe id="main-video" width="360" height="640" src="https://www.youtube.com/embed/KRnkbjUWUVo"></iframe>
+
+                <p id="video-title">01. Video Title Goes Here</p>
+            </div>
+            <div class="video-gallery">
+                <ul>
+                    <li class="active" onclick="changeVideo('https://www.youtube.com/shorts/KRnkbjUWUVo', 'PABLO 01.')">
+                        <img src="/images/projects/taller008.JPG" alt="Thumbnail 01">
+                        <span>PABLO 01.</span>
+                    </li>
+                    <li onclick="changeVideo('https://youtu.be/2xzTiBUU7Zc', 'JESÚS 02.')">
+                        <img src="/images/projects/taller007.JPG" alt="Thumbnail 02">
+                        <span>JESÚS 02.</span>
+                    </li>
+                    <li class="active" onclick="changeVideo('https://www.youtube.com/shorts/KRnkbjUWUVo', 'SHERYL 03.')">    <!-- crear-->
+                        <img src="/images/projects/taller006.JPG" alt="Thumbnail 01">
+                        <span>SHERYL 03.</span>
+                    </li>
+                    <li onclick="changeVideo('https://youtu.be/2xzTiBUU7Zc', 'PRIMA 04.')">     <!-- crear-->
+                        <img src="/images/projects/taller005.JPG" alt="Thumbnail 02">
+                        <span>PRIMA 04.</span>
+                    </li>
+                    <li onclick="changeVideo('https://youtu.be/2xzTiBUU7Zc', 'CZ 05.')">     <!-- crear-->
+                        <img src="/images/projects/taller004." alt="Thumbnail 02">
+                        <span>CZ 05.</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </header>
+
+    <!-- Botón Volver -->
+    <div class="volver-container">
+        <a href="index.html" class="btn-volver">Volver</a>
+    </div>
+
+    <script>
+        function changeVideo(url, title) {
+            document.getElementById('main-video').src = url;
+            document.getElementById('video-title').innerText = title;
+            var items = document.querySelectorAll('.video-gallery li');
+            items.forEach(item => item.classList.remove('active'));
+            event.currentTarget.classList.add('active');
+        }
+    </script>
+</body>
+</html>
