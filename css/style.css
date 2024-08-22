@@ -14,9 +14,9 @@
   --font-size-large: calc(3rem * 1.7);
   --font-size-medium: calc(2rem * 1.7);
   --padding-large: calc(2rem * 1.65);
-  --padding-medium: calc(1rem * 1.65);
-  --padding-small: calc(5px * 1.65);
-  --blur-filter: blur(10px);
+  --padding-medium: calc(1rem * 0.65);
+  --padding-small: calc(5px * 1);
+  --blur-filter: blur(50px);
 }
 
 /* Estilos generales */
@@ -27,7 +27,7 @@ body {
   scroll-behavior: smooth;
   color: var(--text-white);
   margin: 0;
-  padding: 0;
+  padding: var(--padding-medium);
   display: flex;
   flex-direction: column;
   min-height: 100vh;
@@ -67,7 +67,7 @@ header.main h1 {
   width: 100%;
   max-width: 100%;
   margin: 0 auto;
-  padding: var(--padding-medium);
+  padding: var(--padding-small);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -77,13 +77,13 @@ header.main h1 {
 
 
 .padding-y-100 {
-  padding-top: var(--padding-large);
-  padding-bottom: var(--padding-large);
+  padding-top: var(--padding-small);
+  padding-bottom: var(--padding-small);
 }
 
 .project {
   width: 100%; /* Ocupa todo el ancho de la pantalla */
-  max-width: 1200px;
+  max-width: 2000px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -103,15 +103,18 @@ header.main h1 {
 
 .image-container {
   width: 100%;
-  max-width: 800px;
+  
   margin-bottom: 20px;
+  flex: 0 0 auto; /* Mantiene el tamaño del contenedor */
 }
 
 .image-container img {
   width: 100%;
   height: auto;
   object-fit: cover;
+
 }
+
 
 .project:hover .image-container img {
   transform: scale(1.05);
@@ -156,8 +159,12 @@ button,
   -webkit-backdrop-filter: blur(5px);
   text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
   color: var(--text-white);
-  max-width: 80%;
+  max-width: 100%;
   margin: 0 auto;
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .two-columns {
@@ -170,19 +177,23 @@ button,
 .two-columns li {
   margin-bottom: var(--padding-small);
 }
+
 @media (min-width: 768px) {
   .project {
     flex-direction: row;
     align-items: center; /* Asegura que los elementos estén centrados verticalmente */
-    justify-content: center; /* Centra horizontalmente los elementos */
+    justify-content: space-between; /* Espacio adecuado entre elementos */
     text-align: left; /* Para texto alineado a la izquierda en pantallas grandes */
   }
+
   .image-container {
-    flex: 0 0 auto;
-    margin-right: 1rem;
+    flex-basis: 48%; /* Asigna casi la mitad del espacio a la imagen */
+    margin-right: 2%; /* Añade espacio entre la imagen y el texto */
   }
+
   .project-info {
-    flex: 1;
+    flex-basis: 48%; /* Asigna casi la mitad del espacio al texto */
+    max-width: none; /* Permite que el texto ocupe todo el espacio disponible */
   }
 }
 
@@ -226,12 +237,12 @@ button,
   overflow: hidden;
   backdrop-filter: var(--blur-filter);
   -webkit-backdrop-filter: var(--blur-filter);
-  max-width: 1000px;
+  max-width: 1800px;
 }
 
 #curriculum .image-container {
   width: 100%;
-  max-width: 715px;
+  max-width: auto;
   margin-bottom: 2rem;
 }
 
@@ -353,3 +364,5 @@ header.main-galeria h1 {
   background-color: var(--accent-pink);
   transform: translateY(-2px);
 }
+
+
